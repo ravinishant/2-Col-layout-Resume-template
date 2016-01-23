@@ -1,0 +1,193 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+.page {
+    width: 100%;
+    margin: 0px auto;
+    display: block;
+    margin-top: 0px;
+}
+.column-first {
+    width: 67%;
+    float: left;
+} 
+
+.header-first {
+    text-transform: uppercase;
+}
+
+.name-top {
+    font-family: 'Oswald', sans-serif;
+    font-size: 45px;
+    font-weight: normal; 
+    letter-spacing: 9;
+    color:darkred;
+    padding: 0px;
+    line-height: 34px;
+    height: 55px;
+}
+
+.designation-top {
+    display: block;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-family: 'Oswald', sans-serif;
+}
+
+.objective {
+    font-size: 12px;
+    font-family: sans-serif;
+    width: 90%;
+}
+.heading {
+    font-size: 16px;
+/*    margin-top: 10px;*/
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 90%;
+    color: darkred;
+    font-family: 'Oswald', sans-serif;
+    font-weight: normal;
+    letter-spacing: 1.2;
+    border-bottom: solid 1px darkred;
+}
+
+.heading-project {
+    margin-top: -12px;
+}
+.heading-award {
+    margin-top: 5px;
+}
+
+.objective-project {
+     margin-top: 15px;
+}
+.content {
+    font-family: 'Oswald', sans-serif;
+    width: 90%;
+}
+
+.content-small {
+/*    width: 100% !important;*/
+}
+
+.content .sub-heading {
+    font-size: 13px;
+}
+
+.content .sub-content {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.content ul {
+    padding-left: 18px;
+}
+
+.content li {
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.column-last {
+    width: 33%;
+    float:right;
+}
+
+.box {
+    display: inline-block;
+    width: 100%;
+    margin-left: 15px;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 0px;
+}
+
+.box img {
+    width: 20px;
+    display: inline-block;
+    float: left;
+}
+
+.box .info-text {
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+}
+
+.education {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.first-education {
+    
+}
+.education span {
+    font-size: 11px;
+}
+.skill-col-first,
+.courses-col-first{
+    width: 50%;
+    float: left;
+    font-size: 12px;
+    margin-top: -12px;
+}
+
+.skill-col-second,
+.courses-col-second{
+    width: 50%;
+    float: left;
+    font-size: 12px;
+    margin-top: -12px;
+}
+
+.skill-col-first ul, 
+.skill-col-second ul,
+.courses-col-first ul, 
+.courses-col-second ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.skill-col-first ul li:first-child,
+.skill-col-second ul li:first-child{
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+}
+
+.employment-header {
+    float: left;
+    width: 60%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.employment-child {
+    margin-bottom: 5px;
+}
+.employment-header span {
+    font-size: 11px;
+    font-family: none;
+}
+.employment-duration {
+    float: left;
+    font-size: 11px;
+    width: 40%;
+/*    margin-top: -19px;*/
+}
+
+.employment-duration div {
+/*    margin-top: 10px;*/
+}
+
+.employment-child-duration {
+    margin-bottom: 25px;
+}
+
+.resp-sec, .award-sec {
+    margin-top: -15px;
+}
+
+a:visited {
+color: blue;
+}
