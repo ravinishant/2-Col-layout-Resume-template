@@ -18,7 +18,7 @@ pipeline {
       steps {
         script {
           echo "Checking if files have changed for this particular directory and trigger the Wavefront dry run job"
-          def changedCommand = "git diff origin/${env.CHANGE_TARGET}...HEAD --name-only"
+          def changedCommand = "git diff origin/${env.CHANGE_TARGET} --name-only"
           if ("${env.GIT_PREVIOUS_COMMIT}" != "${env.GIT_COMMIT}") {
             // make sure previous commit is still a valid object
             def statusCode = sh (script: "git cat-file -e ${env.GIT_PREVIOUS_COMMIT}", returnStatus: true)
