@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'parallelizable-c7' }
+  agent any
   options { timestamps() }
   stages {
     stage('checkout') {
