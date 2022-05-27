@@ -4,7 +4,17 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        checkout scm
+        checkout([
+        $class: 'GitSCM',
+        branches: scm.branches,
+        extensions: scm.extensions,
+        userRemoteConfigs:
+          [[url: scm.userRemoteConfigs.url[0],
+            name: scm.userRemoteConfigs.name[0],
+            refspec: '+refs/heads/*:refs/remotes/origin/*',
+            credentialsId: scm.userRemoteConfigs.credentialsId[0]
+          ]]
+        ])
       }
     }
     // stage('Wavefront Job Dry Run') {
