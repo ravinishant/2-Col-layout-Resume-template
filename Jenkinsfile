@@ -4,49 +4,34 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
+        scmInfo = checkout scm
+        println("${scmInfo}")
+        env.GIT_BRANCH = scmInfo.GIT_BRANCH
         // checkout([
-        // $class: 'GitSCM',
-        // branches: scm.branches,
-        // extensions: scm.extensions,
-        // userRemoteConfigs:
-        //   [[url: scm.userRemoteConfigs.url[0],
-        //     name: scm.userRemoteConfigs.name[0],
-        //     refspec: '+refs/heads/*:refs/remotes/origin/*',
-        //     credentialsId: scm.userRemoteConfigs.credentialsId[0]
-        //   ]]
-        // ])
-        checkout([
-                  $class: 'GitSCM',
-                  branches: [[name: "${env.svn_revision}"]],
-                  doGenerateSubmoduleConfigurations: false,
-                  extensions: [
-                          [$class: 'CloneOption',
-                           honorRefspec: true,
-                           noTags: false,
-                           shallow: false,
-                           timeout: 20],
-                          [$class: 'LocalBranch', localBranch: "PR-17"],
-                          [$class: 'CleanBeforeCheckout'],
-                          // [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'GlobalServices/']]],
-                  ],
-                  submoduleCfg: [],
-                  userRemoteConfigs: [
-                                    [url: scm.userRemoteConfigs.url[0],
-                                      name: 'origin',
-                                      refspec: '+refs/pull/*:refs/remotes/origin/pr/*',
-                                      credentialsId: scm.userRemoteConfigs.credentialsId[0]
-                                    ]
-                  ]
-          ])
+        //           $class: 'GitSCM',
+        //           branches: [[name: "${env.svn_revision}"]],
+        //           doGenerateSubmoduleConfigurations: false,
+        //           extensions: [
+        //                   [$class: 'CloneOption',
+        //                    honorRefspec: true,
+        //                    noTags: false,
+        //                    shallow: false,
+        //                    timeout: 20],
+        //                   [$class: 'LocalBranch', localBranch: "PR-17"],
+        //                   [$class: 'CleanBeforeCheckout'],
+        //                   // [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'GlobalServices/']]],
+        //           ],
+        //           submoduleCfg: [],
+        //           userRemoteConfigs: [
+        //                             [url: scm.userRemoteConfigs.url[0],
+        //                               name: 'origin',
+        //                               refspec: '+refs/pull/*:refs/remotes/origin/pr/*',
+        //                               credentialsId: scm.userRemoteConfigs.credentialsId[0]
+        //                             ]
+        //           ]
+        //   ])
       }
     }
-    // stage('Wavefront Job Dry Run') {
-    //   steps {
-    //     build job: 'Test-Jenkins-Pipeline',
-    //       parameters: [],
-    //       wait: false
-    //   }
-    // }
     stage('Wavefront Job Dry Run') {
       steps {
         script {
