@@ -6,7 +6,6 @@ pipeline {
       steps {
         scmInfo = checkout scm
         println("${scmInfo}")
-        env.GIT_BRANCH = scmInfo.GIT_BRANCH
         // checkout([
         //           $class: 'GitSCM',
         //           branches: [[name: "${env.svn_revision}"]],
