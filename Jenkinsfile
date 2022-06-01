@@ -4,17 +4,41 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
+        // checkout([
+        // $class: 'GitSCM',
+        // branches: scm.branches,
+        // extensions: scm.extensions,
+        // userRemoteConfigs:
+        //   [[url: scm.userRemoteConfigs.url[0],
+        //     name: scm.userRemoteConfigs.name[0],
+        //     refspec: '+refs/heads/*:refs/remotes/origin/*',
+        //     credentialsId: scm.userRemoteConfigs.credentialsId[0]
+        //   ]]
+        // ])
         checkout([
-        $class: 'GitSCM',
-        branches: scm.branches,
-        extensions: scm.extensions,
-        userRemoteConfigs:
-          [[url: scm.userRemoteConfigs.url[0],
-            name: scm.userRemoteConfigs.name[0],
-            refspec: '+refs/heads/*:refs/remotes/origin/*',
-            credentialsId: scm.userRemoteConfigs.credentialsId[0]
-          ]]
-        ])
+                  $class: 'GitSCM',
+                  branches: [[name: "${env.svn_revision}"]],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [
+                          [$class: 'CloneOption',
+                           honorRefspec: true,
+                           noTags: false,
+                           reference: '/mnt/jenkins/git_repo/Snowflake',
+                           shallow: false,
+                           timeout: 20],
+                          [$class: 'LocalBranch', localBranch: "${env.branch}"],
+                          [$class: 'CleanBeforeCheckout'],
+                          // [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'GlobalServices/']]],
+                  ],
+                  submoduleCfg: [],
+                  userRemoteConfigs: [
+                                    [url: scm.userRemoteConfigs.url[0],
+                                      name: scm.userRemoteConfigs.name[0],
+                                      refspec: '+refs/heads/*:refs/remotes/origin/*',
+                                      credentialsId: scm.userRemoteConfigs.credentialsId[0]
+                                    ]
+                  ]
+          ])
       }
     }
     // stage('Wavefront Job Dry Run') {
