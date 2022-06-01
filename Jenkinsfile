@@ -32,7 +32,7 @@ pipeline {
                   submoduleCfg: [],
                   userRemoteConfigs: [
                                     [url: scm.userRemoteConfigs.url[0],
-                                      name: scm.userRemoteConfigs.name[0],
+                                      name: 'origin',
                                       refspec: '+refs/pull/*:refs/remotes/origin/pr/*',
                                       credentialsId: scm.userRemoteConfigs.credentialsId[0]
                                     ]
