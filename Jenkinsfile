@@ -4,19 +4,17 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        scmInfo = checkout([
-        $class: 'GitSCM',
-        branches: scm.branches,
-        extensions: scm.extensions,
-        userRemoteConfigs:
-          [[url: scm.userRemoteConfigs.url[0],
-            name: scm.userRemoteConfigs.name[0],
-            refspec: "+refs/pull/*:refs/remotes/origin/pr/*",
-            credentialsId: scm.userRemoteConfigs.credentialsId[0]
-          ]]
-        ])
-        println("${scmInfo}")
-        env.GIT_BRANCH = scmInfo.GIT_BRANCH
+        checkout([
+            $class: 'GitSCM',
+            branches: scm.branches,
+            extensions: scm.extensions,
+            userRemoteConfigs:
+              [[url: scm.userRemoteConfigs.url[0],
+                name: scm.userRemoteConfigs.name[0],
+                refspec: "+refs/pull/*:refs/remotes/origin/pr/*",
+                credentialsId: scm.userRemoteConfigs.credentialsId[0]
+              ]]
+            ])
       }
     }
     stage('Wavefront Job Dry Run') {
