@@ -23,10 +23,9 @@ pipeline {
                           [$class: 'CloneOption',
                            honorRefspec: true,
                            noTags: false,
-                           reference: '/mnt/jenkins/git_repo/Snowflake',
                            shallow: false,
                            timeout: 20],
-                          [$class: 'LocalBranch', localBranch: "${env.branch}"],
+                          [$class: 'LocalBranch', localBranch: "PR-17"],
                           [$class: 'CleanBeforeCheckout'],
                           // [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'GlobalServices/']]],
                   ],
@@ -34,7 +33,7 @@ pipeline {
                   userRemoteConfigs: [
                                     [url: scm.userRemoteConfigs.url[0],
                                       name: scm.userRemoteConfigs.name[0],
-                                      refspec: '+refs/heads/*:refs/remotes/origin/*',
+                                      refspec: '+refs/pull/*:refs/remotes/origin/pr/*',
                                       credentialsId: scm.userRemoteConfigs.credentialsId[0]
                                     ]
                   ]
