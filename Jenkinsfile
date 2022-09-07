@@ -4,25 +4,28 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        checkout([
-        $class: 'GitSCM',
-        branches: [[name: "${env.svn_revision}"]],
-        doGenerateSubmoduleConfigurations: false,
-        extensions: [
-                          [$class: 'CloneOption',
-                           honorRefspec: true,
-                           noTags: false,
-                           reference: '/mnt/jenkins/git_repo/Snowflake',
-                           shallow: false,
-                           timeout: 20],
-                          [$class: 'LocalBranch', localBranch: "${env.branch}"],
-                          [$class: 'CleanBeforeCheckout'],
-                  ],
-        userRemoteConfigs:
-          [[url: scm.userRemoteConfigs.url[0],
-            credentialsId: scm.userRemoteConfigs.credentialsId[0]
-          ]]
-        ])
+        checkout scm
+        
+        // checkout([
+        // $class: 'GitSCM',
+        // branches: [[name: "${env.svn_revision}"]],
+        // doGenerateSubmoduleConfigurations: false,
+        // extensions: [
+        //                   [$class: 'CloneOption',
+        //                    honorRefspec: true,
+        //                    noTags: false,
+        //                    reference: '/mnt/jenkins/git_repo/Snowflake',
+        //                    shallow: false,
+        //                    timeout: 20],
+        //                   [$class: 'LocalBranch', localBranch: "${env.branch}"],
+        //                   [$class: 'CleanBeforeCheckout'],
+        //           ],
+        // userRemoteConfigs:
+        //   [[url: scm.userRemoteConfigs.url[0],
+        //     credentialsId: scm.userRemoteConfigs.credentialsId[0]
+        //   ]]
+        // ])
+
         // checkout([
         //           $class: 'GitSCM',
         //           branches: [[name: "${env.svn_revision}"]],
